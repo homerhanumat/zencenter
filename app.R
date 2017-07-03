@@ -9,7 +9,8 @@ library(pool)
 pool <- dbPool(
   drv = RMySQL::MySQL(),
   dbname = "zen",
-  #host = "23.236.53.90 ",
+  #host = "127.0.0.1@162.243.217.41",
+  #port = 3306,
   host = "localhost",
   username = "guest",
   password = "guest",
