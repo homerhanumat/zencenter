@@ -5,15 +5,28 @@ library(shinydashboard)
 library(DT)
 library(DBI)
 library(pool)
+#library(RMySQL) (we will use only one function from this package)
 
 pool <- dbPool(
   drv = RMySQL::MySQL(),
   dbname = "zen",
-  #host = "127.0.0.1@162.243.217.41",
-  #port = 3306,
-  host = "localhost",
+  
+  # connecting to a remote host.
+  # in the mysql configuration on this host,
+  # make sure to set bind-address	= <ip-address-here>
+  host = "138.197.67.219",
+  port = 3306,
+  
+  # For local connection use below.
+  # (On linux you might also need to set the correct socket, e.g.,
+  # for Ubuntu it's /var/run/mysqld/mysqld.sock, not
+  # /tmp/mysql.sock as on Mac OS)
+  #host = "localhost",
+  
+  # guest has very limited privileges (cannot even commit changes)
   username = "guest",
   password = "guest",
+  
   # the three below are set at their default values:
   minSize = 1,
   maxSize = Inf,
@@ -147,6 +160,8 @@ server <- function(input, output, session) {
                        donors = NULL,
                        totals = NULL)
   
+# observers -----------------------------------------------------
+  
   observeEvent(input$members1_rows_selected, {
     id <- rv$members1[input$members1_rows_selected,]$ID
     sql <- paste0("select * from participant where Part_ID = ", id, ";")
@@ -217,6 +232,7 @@ server <- function(input, output, session) {
     rv$totals <- dbGetQuery(pool, sql)
   })
 
+# output ------------------------------------------------------------
   
   output$members1 <- DT::renderDataTable({
     rv$members1
