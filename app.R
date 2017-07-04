@@ -14,14 +14,15 @@ pool <- dbPool(
   # connecting to a remote host.
   # in the mysql configuration on this host,
   # make sure to set bind-address	= <ip-address-here>
-  host = "138.197.67.219",
-  port = 3306,
+  #host = "138.197.67.219",
+  #port = 3306,
   
   # For local connection use below.
   # (On linux you might also need to set the correct socket, e.g.,
   # for Ubuntu it's /var/run/mysqld/mysqld.sock, not
   # /tmp/mysql.sock as on Mac OS)
-  #host = "localhost",
+  host = "localhost",
+  unix.sock = "/var/run/mysqld/mysqld.sock",
   
   # guest has very limited privileges (cannot even commit changes)
   username = "guest",
