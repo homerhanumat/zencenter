@@ -20,6 +20,14 @@ sql> create user 'guest'@'%' identified by 'guest';
 sql> grant insert, delete, update, select on zen.* to 'guest'@'%';
 ```
 
+You may wish to prevent this user from commiting changes.  In MySQL the default behavior is to autocommit single-statment transactions, so you will need to turn this off.  You can do so (for all non-super users inclusing "guest") with the following command:
+
+```
+sql> set global init_connect='SET AUTOCOMMIT=0';
+```
+
+This won't affect the ability of admin users to commit, as the `init_connect` script is not run when they connect.  (Of course, non-super users other than "guest" are also stripped of their autocommit powers.)
+
 To create and populate the tables, you need to run the SQL script `resources/initialize.sql`.  Making sure you are connected to your MySQL server at the root of this repository, run:
 
 ```

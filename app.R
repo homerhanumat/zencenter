@@ -11,18 +11,29 @@ pool <- dbPool(
   drv = RMySQL::MySQL(),
   dbname = "zen",
   
-  # connecting to a remote host.
-  # in the mysql configuration on this host,
+  ########################################
+  #### Connecting to a remote host.
+  ########################################
+  
+  # in the mysql configuration on the host,
   # make sure to set bind-address	= <ip-address-here>
   #host = "138.197.67.219",
   #port = 3306,
   
-  # For local connection use below.
+  #############################################
+  # Connecting to a local host
+  #############################################
+  
   # (On linux you might also need to set the correct socket, e.g.,
-  # for Ubuntu it's /var/run/mysqld/mysqld.sock, not
-  # /tmp/mysql.sock as on Mac OS)
+  # for Debian/Ubuntu it's currently /var/run/mysqld/mysqld.sock.
+  # On MacOS it's /tmp/mysql.sock, but I have not had to set it
+  # when using this app locally with MacOS..
   host = "localhost",
   unix.sock = "/var/run/mysqld/mysqld.sock",
+  
+  ##############################################
+  # The guest user
+  ###############################################
   
   # guest has very limited privileges (cannot even commit changes)
   username = "guest",
