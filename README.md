@@ -17,7 +17,7 @@ On your local MySQL server:
 ```
 sql> create database zen;
 sql> create user 'guest'@'%' identified by 'guest';
-sql> grant all insert, delete, update, select on zen.* to 'guest'@'%';
+sql> grant insert, delete, update, select on zen.* to 'guest'@'%';
 ```
 
 To create and populate the tables, you need to run the SQL script `resources/initialize.sql`.  Making sure you are connected to your MySQL server at the root of this repository, run:
