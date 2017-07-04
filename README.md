@@ -2,13 +2,15 @@
 
 ## Purpose
 
-Example of an app that connects to a database, permitting the user to modify some tables and to run a couple of pre-defined queries.  It is demonstration-only:  no SQL commit is ever run, so no permanent change is made to the databse.
+Example of an app that connects to a MySQL database, permitting the user to modify some tables and to run a couple of pre-defined queries.  It is demonstration-only:  no SQL commit is ever run, so no permanent change is made to the databse.
 
-You may view a working instance at [https://homer.shinyapps.io/ict4405/](https://homer.shinyapps.io/ict4405/).
+You may view a working instance that connects to the database remotely at [https://homer.shinyapps.io/ict4405/](https://homer.shinyapps.io/ict4405/).
+
+A working instance that connects locally is at: [http://138.197.67.219:3838/zencenter/](http://138.197.67.219:3838/zencenter/).
 
 ## Installation and Setup
 
-Download this repository, or fork and clone it.
+You may also run the app on your own machine.  Download this repository, or fork and clone it.
 
 On your local MySQL server:
 
